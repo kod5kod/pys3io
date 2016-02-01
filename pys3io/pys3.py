@@ -95,6 +95,7 @@ class PyS3:
     def s3_2local(self, s3_file_path, local_directory_path, file_name=None):
         '''This method downloads a specified S3_file_path to a specified local_file_path.
         '''
+        import os
         file2dwnld = self.bucket.get_key('{}'.format(s3_file_path))
         keyString = str(file2dwnld.key).split('/')[-1]
         # check if file exists locally, if not: download it
