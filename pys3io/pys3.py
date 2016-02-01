@@ -100,13 +100,14 @@ class PyS3:
         keyString = str(file2dwnld.key).split('/')[-1]
         # check if file exists locally, if not: download it
         if not file_name: # if file name is not specified (None):
-            if not os.path.exists(local_directory_path + keyString):
-                file2dwnld.get_contents_to_filename(local_directory_path + keyString)
+            if not os.path.exists(os.path.join(local_directory_path , keyString)):
+                file2dwnld.get_contents_to_filename(os.path.join(local_directory_path , keyString))
+                print 'File has been copied.'
             else:
                 print 'file already exist in local path'
         else: # if file name is  specified :
-            if not os.path.exists(local_directory_path + file_name):
-                file2dwnld.get_contents_to_filename(local_directory_path + file_name)
+            if not  os.path.exists(os.path.join(local_directory_path , file_name)):
+                file2dwnld.get_contents_to_filename(os.path.join(local_directory_path , file_name))
             else:
                 print 'file already exist in local path'
 
