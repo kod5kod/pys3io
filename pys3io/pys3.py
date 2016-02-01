@@ -30,6 +30,8 @@ class PyS3:
                         }
 
     """
+    import os
+
 
     def __init__(self, s3_conf_dict,bucket_name):
         """Instantiate the insance and open an active connection.
