@@ -39,6 +39,7 @@ class PyS3:
         # Loading BOTO:
         import boto
         import os
+        from boto.s3.key import Key
 
         # Initiating variables:
         self.bucket_name = bucket_name
@@ -122,7 +123,7 @@ class PyS3:
             sys.stdout.write('.')
             sys.stdout.flush()
 
-        k = self.bucket.key_class()
+        k = Key(self.bucket)
         k.key = '{}'.format(S3_file_path)
         k.set_contents_from_filename(local_file_path, cb=percent_cb, num_cb=10)
         print 'The file: \n\'{}\' was uploaded to S3 at the following path: \n\'{}\''.fomrat(local_file_path,S3_file_path)
