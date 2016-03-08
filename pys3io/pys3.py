@@ -112,10 +112,20 @@ class PyS3:
                 print 'file already exist in local path'
 
 
-    def local_2s3(self, S3_file_path, local_directory_path, file_name=False):
-        '''This method downloads a specified S3_file_path to a specified local_file_path.
+    def local_2s3(self, local_file_path, S3_file_path):
+        '''This method uploads a specified local file to a specified  S3 path.
+        local_file_path = local file path to be uploaded
+        S3_file_path = S3 file path to copy the local file into
         '''
-        return 'Currently not operational, please contact developer'
+        import sys
+        def percent_cb(complete, total):
+            sys.stdout.write('.')
+            sys.stdout.flush()
+
+        k = Key(self.bucket)
+        k.key = '{}'.format(S3_file_path)
+        k.set_contents_from_filename(local_file_path, cb=percent_cb, num_cb=10)
+        print 'The file: \n\'{}\' was uploaded to S3 at the following path: \n\'{}\''.fomrat(local_file_path,S3_file_path)
 
 
     def close_connection(self):
