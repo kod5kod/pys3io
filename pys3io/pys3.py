@@ -119,6 +119,7 @@ class PyS3:
         S3_file_path = S3 file path to copy the local file into
         '''
         import sys
+        from boto.s3.key import Key
         def percent_cb(complete, total):
             sys.stdout.write('.')
             sys.stdout.flush()
