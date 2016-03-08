@@ -127,7 +127,7 @@ class PyS3:
         k = Key(self.bucket)
         k.key = '{}'.format(S3_file_path)
         k.set_contents_from_filename(local_file_path, cb=percent_cb, num_cb=10)
-        print 'The file: \n\'{}\' was uploaded to S3 at the following path: \n\'{}\''.fomrat(local_file_path,S3_file_path)
+        print 'The file: \n\'{}\' was uploaded to S3 at the following path: \n\'{}\''.format(local_file_path,S3_file_path)
 
 
     def close_connection(self):
